@@ -1,0 +1,7 @@
+DistanceSensor	            KEYWORD1
+HC-SR04       	            KEYWORD2
+Ultrasonik                  KEYWORD3
+Mesafe                      KEYWORD4
+UltrasonicDistanceSensor    KEYWORD5
+Ultrasonic                  KEYWORD6
+Distance                    KEYWORD7

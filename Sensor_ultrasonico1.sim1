@@ -1,0 +1,29 @@
+<circuit version="1.0.0-SR2" rev="1449" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="Uno-4" mainComp="false" Show_id="true" Show_Val="false" Pos="804,480" rotation="0" hflip="1" vflip="1" label="Uno-4" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps itemtype="MCU" CircId="4_mega328-109" mainComp="true" Show_id="true" Show_Val="false" Pos="20,20" rotation="0" hflip="1" vflip="1" label="4_mega328-109" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="sensor_ultrasinico1.hex" Auto_Load="false" Rst_enabled="true" Ext_Osc="true" Wdt_enabled="false" />
+</item>
+
+<item itemtype="SR04" CircId="SR04-7" mainComp="false" Show_id="false" Show_Val="false" Pos="744,352" rotation="0" hflip="1" vflip="1" label="SR04-7" idLabPos="-16,-48" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Voltage Source" CircId="Voltage Source-13" mainComp="false" ShowProp="MaxValue" Show_id="false" Show_Val="true" Pos="588,352" rotation="0" hflip="1" vflip="1" label="Voltage Source-13" idLabPos="-32,-48" labelrot="0" valLabPos="-8,30" valLabRot="0" Running="true" Value_Volt="0.165 V" MaxValue="5 V" />
+
+<item itemtype="Ground" CircId="Ground-15" mainComp="false" Show_id="false" Show_Val="false" Pos="676,596" rotation="0" hflip="1" vflip="1" label="Ground-15" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Resistor" CircId="Resistor-18" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="768,568" rotation="0" hflip="1" vflip="1" label="Resistor-18" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="220 Ω" />
+
+<item itemtype="Led" CircId="Led-34" mainComp="false" Show_id="false" Show_Val="false" Pos="720,568" rotation="-180" hflip="1" vflip="1" label="Led-34" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Red" Grounded="false" Threshold="1.8 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Connector" uid="connector-8" startpinid="Uno-4-3" endpinid="SR04-7-trigpin" pointList="812,520,744,520,744,400" />
+
+<item itemtype="Connector" uid="connector-9" startpinid="Uno-4-2" endpinid="SR04-7-outpin" pointList="812,512,752,512,752,400" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="SR04-7-inpin" endpinid="Voltage Source-13-outPin" pointList="656,328,616,328,616,368" />
+
+<item itemtype="Connector" uid="Connector-19" startpinid="Resistor-18-rPin" endpinid="Uno-4-8" pointList="784,568,812,568" />
+
+<item itemtype="Connector" uid="Connector-35" startpinid="Led-34-lPin" endpinid="Resistor-18-lPin" pointList="736,568,752,568" />
+
+<item itemtype="Connector" uid="Connector-36" startpinid="Led-34-rPin" endpinid="Ground-15-Gnd" pointList="704,568,676,568,676,580" />
+
+</circuit>
