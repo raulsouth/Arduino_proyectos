@@ -1,16 +1,21 @@
+//Prueba de control de motores de corriente continua usando
+//el puerto serie
 
+#include "SoftwareSerial.h"
 int IN1 = 4;
 int IN2 = 5;
 int IN3 = 6;
 int IN4 = 7;
-int ENA = 9;
-int ENB = 10;
+int ENA = 10;
+int ENB = 11;
 int velA;
 int velB;
+int dato;
 
 void setup() {
-pinMode(13, OUTPUT);
-digitalWrite(13, LOW);
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, LOW);
 
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
@@ -24,25 +29,33 @@ digitalWrite(13, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
 
+  Serial.println("Motores listos");
+
   delay(3000);
 
 }
 
 void loop() {
-  velA = 100;
-  velB = 100;
   adelante();
-  delay(2000);
-  //velB = 75;
-  //adelante();
-  //delay(5000);
-  //velB = 100;
-  //adelante();
-  //delay(2000);
-  
-  detener();
-  delay(3000);
-  
+  if (Serial.available()) {
+    dato = Serial.read();
+    if (dato == '1'){
+      velA = 75;
+      velB = 75;
+      //adelante();
+    }
+    if (dato == '2') {
+      velA = 100;
+      velB = 100;
+    }
+    if (dato == '0') {
+      velA = 0;
+      velB = 0;
+      Serial.println("Motores detenidos");
+      //detener();
+    }
+
+  }
 
 }
 
