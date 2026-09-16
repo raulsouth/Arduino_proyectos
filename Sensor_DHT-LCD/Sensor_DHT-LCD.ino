@@ -36,7 +36,7 @@ void loop() {
   Serial.println(HUMEDAD);
   delay(1000);
 
-  if (TEMPERATURA <= 21 & HUMEDAD <= 61){
+  if (TEMPERATURA <= 20){
     lcd.setCursor(0,0);
     lcd.print("Temp: ");
     lcd.setCursor(9, 0);
@@ -48,13 +48,13 @@ void loop() {
     lcd.print(HUMEDAD);
 
 
-    delay(1000);
+    delay(60000);
     lcd.clear();
 
   }
   
   
-  if (TEMPERATURA > 21 & HUMEDAD > 61){
+  if (TEMPERATURA > 20 & HUMEDAD > 60){
     lcd.setCursor(0,0);
     lcd.print("T: mas de 20");
     lcd.setCursor(0,1);
@@ -62,5 +62,6 @@ void loop() {
     //lcd.clear();
 
   }
+  
 
 }
