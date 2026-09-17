@@ -37,7 +37,7 @@ void loop() {
   delay(1000);
   lcd.clear();
 
-  if (TEMPERATURA > 20 && HUMEDAD > 60){
+  if (TEMPERATURA > 20 && HUMEDAD > 60){//Dos condiciones
     Serial.println("T: mas de 20");
     Serial.println("H: mas de 60");
     lcd.setCursor(0,0);
@@ -48,7 +48,7 @@ void loop() {
 
   }
   else {
-    Serial.println("Temp: "+String(TEMPERATURA)+"°C");
+    Serial.println("Temp: "+String(TEMPERATURA)+"*C");
     Serial.println("H: "+String(HUMEDAD)+"%");
 
     lcd.setCursor(0,0);
