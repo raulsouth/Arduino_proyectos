@@ -2,18 +2,21 @@
 
 SoftwareSerial miBT(2,3);   //Rx, Tx
 int DATO;// = 0;
-
+int led1 = 8;
+int led2 = 9;
 
 void setup() {
   Serial.begin(9600);
   miBT.begin(38400);  //Velocidad de comunic. por defecto para el módulo bluetooth
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
-  digitalWrite(8, HIGH);
-  digitalWrite(9, HIGH);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, HIGH);
   delay(500);
-  digitalWrite(8, LOW);
-  digitalWrite(9, LOW);
+  digitalWrite(led1, LOW);
+  digitalWrite(led2, LOW);
+  miBT.println("Listo");
+  miBT.println("Usa los numeros: 1, 2, 3, 4");
 }
 
 void loop() {
@@ -22,13 +25,20 @@ void loop() {
     
     DATO = miBT.read();
     if (DATO == '1'){
-      digitalWrite(8, HIGH);
-    
+      digitalWrite(led1, HIGH);
     }
     if (DATO == '2'){
-      digitalWrite(8, LOW);
+      digitalWrite(led1, LOW);
+    }
+
+    if (DATO == '3'){
+      digitalWrite(led2, HIGH);
+    }
+    if (DATO == '4'){
+      digitalWrite(led2, LOW);
     }
   }
+
     
   }   
 
