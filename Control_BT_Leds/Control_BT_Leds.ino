@@ -1,3 +1,5 @@
+//Control de dos leds mediante bluetooth.
+
 #include <SoftwareSerial.h>
 
 SoftwareSerial miBT(2,3);   //Rx, Tx
@@ -16,6 +18,7 @@ void setup() {
   digitalWrite(led1, LOW);
   digitalWrite(led2, LOW);
   miBT.println("Listo");
+  miBT.println("led1 y led2 apagados");
   miBT.println("Usa los numeros: 1, 2, 3, 4");
 }
 
@@ -26,16 +29,20 @@ void loop() {
     DATO = miBT.read();
     if (DATO == '1'){
       digitalWrite(led1, HIGH);
+      miBT.println("led1 on");
     }
     if (DATO == '2'){
       digitalWrite(led1, LOW);
+      miBT.println("led1 off");
     }
 
     if (DATO == '3'){
       digitalWrite(led2, HIGH);
+      miBT.println("led2 on");
     }
     if (DATO == '4'){
       digitalWrite(led2, LOW);
+      miBT.println("led2 off");
     }
   }
 
