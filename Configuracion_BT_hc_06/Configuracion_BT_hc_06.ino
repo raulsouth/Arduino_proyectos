@@ -13,8 +13,9 @@ void setup() {
   miBT.begin(9600);
 
 }
-
 void loop() {
+    //miBT.println("hola");
+
   if (miBT.available())   //Lee BT y envía a Arduino.
   Serial.write(miBT.read());
 
