@@ -13,6 +13,7 @@ void setup() {
   digitalWrite(led1, HIGH);
   delay(100);
   digitalWrite(led1, LOW);
+  
 
 }
 
@@ -21,9 +22,11 @@ void loop() {
     DATO = SerialBT.read();
     if (DATO == '1'){
       digitalWrite(led1, HIGH);
+      SerialBT.println("led1 on");
     }
     if (DATO == '2'){
       digitalWrite(led1, LOW);
+      SerialBT.println("led2 off");
     }
   }
 
