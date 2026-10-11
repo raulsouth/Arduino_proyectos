@@ -4,12 +4,12 @@
 
 SoftwareSerial miBT(2,3);   //Rx, Tx
 int DATO;// = 0;
-int led1 = 8;
+int led1 = 13;
 int led2 = 9;
 
 void setup() {
   Serial.begin(9600);
-  miBT.begin(9600);  //Velocidad de comunic. por defecto para el módulo bluetooth
+  miBT.begin(38400);  //Velocidad de comunic. por defecto para el módulo bluetooth
   pinMode(led1, OUTPUT);
   pinMode(led2, OUTPUT);
   digitalWrite(led1, HIGH);
