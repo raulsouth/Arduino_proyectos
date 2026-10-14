@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-int led1 = 26;
+int led1 = 12;//26;
 int brillo = 0;
 // Características del PWM
 const int frecuencia = 1000;

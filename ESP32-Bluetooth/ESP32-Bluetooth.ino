@@ -4,7 +4,7 @@
 String device_name = "ESP32-BT-Raul";
 BluetoothSerial SerialBT;
 int DATO;
-int led1 = 26;
+int led1 = 12;
 void setup() {
   Serial.begin(115200);
   SerialBT.begin(device_name);

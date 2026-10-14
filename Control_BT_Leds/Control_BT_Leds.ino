@@ -4,7 +4,7 @@
 
 SoftwareSerial miBT(2,3);   //Rx, Tx
 int DATO;// = 0;
-int led1 = 13;
+int led1 = 1;
 int led2 = 9;
 
 void setup() {

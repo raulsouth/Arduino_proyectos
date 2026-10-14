@@ -1,7 +1,10 @@
 //Control de motores dc para un vehículo de dos motores con uno de ellos para controlar la dirección y el otro sentido (adelante y atras)
 
 #include <Arduino.h>
+#include "BluetoothSerial.h"
 //#include <SoftwareSerial.h>
+String device_name = "ESP32-BT-Raul";
+BluetoothSerial SerialBT;
 
 // Motor de atras
 const int ENA = 32;
@@ -22,6 +25,7 @@ char dato;
 
 void setup() {
   Serial.begin(115200);
+  SerialBT.begin(device_name);
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
@@ -59,8 +63,8 @@ void setup() {
 void loop() {
  
 
-  if (Serial.available()) {
-    dato = Serial.read();
+  if (SerialBT.available()) {
+    dato = SerialBT.read();
 
     // Motor B delantero
     if (dato == 'd') {
