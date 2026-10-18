@@ -1,7 +1,7 @@
 //Efecto respiración
 //Uso de la salida DAC para controlar le intensidad de un led.
 //Usando el conversor digital analógico controlamos la cantidad de 
-//energía que se envíaa un led para tener un efecto similar al de
+//energía que se envía un led para tener un efecto similar al de
 //la salida PWM.
 
 void setup() {
