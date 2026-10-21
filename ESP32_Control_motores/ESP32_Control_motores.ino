@@ -7,14 +7,14 @@ String device_name = "ESP32-BT-Raul";
 BluetoothSerial SerialBT;
 
 // Motor de atras
-const int ENA = 32;
-const int IN1 = 23;
-const int IN2 = 25;
+const int ENA = 25;
+const int IN1 = 26; //23
+const int IN2 = 27;
 
 // Motor de adelante
-const int IN3 = 26;
-const int IN4 = 27;
-const int ENB = 14;
+const int IN3 = 14;
+const int IN4 = 12;
+const int ENB = 13;
 
 // Variables para controlar la velocidad de cada motor
 int velA;
@@ -35,9 +35,13 @@ void setup() {
 
   delay(500);
 
-  // Hacer un movimiento muy corto hacia adelante con motor A
+  // Hacer un movimiento muy corto hacia adelante y hacia atras con motor A
   velA = 75;
   adelante();
+  delay(100);
+  detenerA();
+  delay(500);
+  atras();
   delay(100);
   detenerA();
   delay(1000);
@@ -80,16 +84,20 @@ void loop() {
       detenerB();
     }
 
-    else if (dato == 'x') {
+    else if (dato == 'z') {
     detenerB();
     }
 
     // Motor A trasero
-    if (dato == 'w') {
+    else if (dato == 'w') {
       velA = 60;
       adelante();
     }
-    else if (dato == 'z') {
+    else if (dato == 's') {
+      velA = 60;
+      atras();
+    }
+    else if (dato == 'x') {
       detenerA();
     }
    
@@ -107,7 +115,7 @@ void loop() {
   detenerA();
   //Serial.println("Detener");
   delay(2000);
-*/
+
   // Prueba de motor B
   /*velB = 75;
   derecha();
@@ -115,6 +123,14 @@ void loop() {
   detenerB();
   delay(5000);
 */
+  // Prueba de motor A hacia atras
+  /*velA = 75;
+  atras();
+  delay(1000);
+  detenerA();
+  delay(2000);
+*/
+  
 
   
 
@@ -124,6 +140,15 @@ void adelante() {
   analogWrite(ENA, velA);
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
+
+}
+
+void atras() {
+  analogWrite(ENA, velA);
+  //digitalWrite(ENA, HIGH);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  SerialBT.println("atras");
 
 }
 
