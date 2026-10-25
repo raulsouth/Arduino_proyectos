@@ -3,8 +3,8 @@
 
 String device_name = "ESP32-BT-Raul";
 BluetoothSerial SerialBT;
-int DATO;
-int led1 = 12;
+char DATO;
+int led1 = 2;
 void setup() {
   Serial.begin(115200);
   SerialBT.begin(device_name);
@@ -20,11 +20,11 @@ void setup() {
 void loop() {
   if (SerialBT.available()){
     DATO = SerialBT.read();
-    if (DATO == '1'){
+    if (DATO == 'W'){
       digitalWrite(led1, HIGH);
       SerialBT.println("led1 on");
     }
-    if (DATO == '2'){
+    if (DATO == 'S'){
       digitalWrite(led1, LOW);
       SerialBT.println("led2 off");
     }
