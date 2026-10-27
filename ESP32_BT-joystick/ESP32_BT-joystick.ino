@@ -14,10 +14,10 @@ BluetoothSerial SerialBT;
 
 
 // Pines para los Joysticks (pines ADC1 en el ESP32)
-const int PIN_X1 = 25; // Joystick 1 - Eje X
-const int PIN_Y1 = 26; // Joystick 1 - Eje Y
-const int PIN_X2 = 27; // Joystick 2 - Eje X
-const int PIN_Y2 = 14; // Joystick 2 - Eje Y
+const int PIN_X1 = 34; // Joystick 1 - Eje X
+const int PIN_Y1 = 35; // Joystick 1 - Eje Y
+const int PIN_X2 = 32; // Joystick 2 - Eje X
+const int PIN_Y2 = 33; // Joystick 2 - Eje Y
 
 // Dirección MAC del HC-05 / HC-06
 uint8_t address[6] = {0x00, 0x22, 0x12, 0x01, 0x20, 0x3D}; // La dirección MAC es 0022:12:01203D
