@@ -1,4 +1,6 @@
 //Control de dos leds mediante bluetooth.
+//Se conectará un joystick de dos ejes para hacer pruebas
+//Según la posición del los ejes x e y cambiará el brillo de los leds
 
 #include <SoftwareSerial.h>
 
@@ -11,13 +13,16 @@ void setup() {
   miBT.begin(38400);  //Velocidad de comunic. por defecto para el módulo bluetooth
   pinMode(led1, OUTPUT);
   pinMode(led2, OUTPUT);
-  analogWrite(led1, 5);//digitalWrite(led1, HIGH);
-  analogWrite(led2, 255);//digitalWrite(led2, HIGH);
+  // Prueba si funcionan los leds
+  digitalWrite(led1, HIGH);
+  digitalWrite(led2, HIGH);
   delay(500);
-  analogWrite(led1, 0);digitalWrite(led1, LOW);
-  analogWrite(led2, 0);//digitalWrite(led2, LOW);
+  digitalWrite(led1, LOW);
+  digitalWrite(led2, LOW);
+  // Envío de mensaje al Maestro
   miBT.println("Listo");
   miBT.println("led1 y led2 apagados");
+  delay(3000);
 }
 
 void loop() {
@@ -35,34 +40,28 @@ void loop() {
     while (miBT.available() > 0) {
     miBT.read();
     }
-
-    // Al encontrar el salto de línea '\n', descartamos el resto de buffer
-    //if (miBT.read() == '\n') {
-
+    
       // Opcional: Imprime en la PC los datos recibidos para verificar el joystick
-      Serial.print("Recibido -> X1: "); Serial.print(x1);
-      Serial.print(" | Y1: "); Serial.println(y1);
-      // Mapeo de intensidad (usando el Eje y del primer joystick)
-      // El centro del joystick está cerca de 2048
-
-
-
-
+      // Serial.print("Recibido -> X1: "); Serial.print(x1);
+      // Serial.print(" | Y1: "); Serial.println(y1);
+      
       int intensidady1 = 0;
       int intensidadx1 = 0;
-
+      // Mapeo de intensidad (usando el Eje y del primer joystick)
+      // El centro del joystick está cerca de 2048
+      // Control del led2 con el eje x
       if (x1 > 2200) {
-        intensidadx1 = map(x1, 2200, 4095, 0, 255);
+        intensidadx1 = map(x1, 2200, 4095, 20, 255);
         analogWrite(led2, intensidadx1);
       } else if (x1 < 1800) {
-        intensidadx1 = map(x1, 1800, 0, 0, 255);
+        intensidadx1 = map(x1, 1800, 0, 20, 0);
         analogWrite(led2, intensidadx1);
       } else if (1800 < x1 < 2200) {
-        analogWrite(led2, 0);
-        digitalWrite(led2, LOW);
+        analogWrite(led2, 20);
+        //digitalWrite(led2, LOW);
       }
 
-      
+      // Control del led1 con el eje y
       if (y1 > 2200) {
         intensidady1 = map(y1, 2200, 4095, 0, 255);
         analogWrite(led1, intensidady1);
@@ -71,38 +70,11 @@ void loop() {
         analogWrite(led1, intensidady1);
       } else if (1800 < y1 < 2200) {
         analogWrite(led1, 0);
-        digitalWrite(led1, LOW);
+        digitalWrite(led1, LOW);// Por seguridad enviamos LOW
       }
-
-      /*if (x1 > 2200 && y1 > 2200)  { // Aumenta intensidad
-        intensidadx1 = map(x1, 2200, 4095, 0, 255);
-        intensidady1 = map(y1, 2200, 4095, 0, 255);
-        
-
-        analogWrite(led2, intensidadx1); // indica x1
-        analogWrite(led1, intensidady1); // indica y1
-        
-        
-      } else if (x1 < 1800 && y1 < 1800) { // Disminuye intensidad
-        intensidadx1 = map(x1, 1800, 0, 0, 255);
-        intensidady1 = map(y1, 1800, 0, 0, 255);
-        
-        analogWrite(led2, intensidadx1);
-        analogWrite(led1, intensidady1);
-        
-      } else {  // Joystick en el centro
-      analogWrite(led1, 0);
-      analogWrite(led2, 0);
-      digitalWrite(led1, LOW);
-      digitalWrite(led2, LOW);
-      
-
-      }*/
-    }
-    
-    
   }
-
     
-  //}   
+    
+    
+}  
 

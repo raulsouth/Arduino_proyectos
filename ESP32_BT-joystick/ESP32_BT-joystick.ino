@@ -1,4 +1,5 @@
 //Control de leds desde un ESP32 hacia un Arduino esclavo mediante conexión bluetooth
+//Se usa un joystick de dos ejes. Se hará pruebas para contolar el brillo de los leds
 
 #include <Arduino.h>
 #include "BluetoothSerial.h"
