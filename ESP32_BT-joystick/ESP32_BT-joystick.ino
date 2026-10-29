@@ -16,8 +16,8 @@ BluetoothSerial SerialBT;
 // Pines para los Joysticks (pines ADC1 en el ESP32)
 const int PIN_X1 = 34; // Joystick 1 - Eje X
 const int PIN_Y1 = 35; // Joystick 1 - Eje Y
-const int PIN_X2 = 32; // Joystick 2 - Eje X
-const int PIN_Y2 = 33; // Joystick 2 - Eje Y
+//const int PIN_X2 = 32; // Joystick 2 - Eje X
+//const int PIN_Y2 = 33; // Joystick 2 - Eje Y
 
 // Dirección MAC del HC-05 / HC-06
 uint8_t address[6] = {0x00, 0x22, 0x12, 0x01, 0x20, 0x3D}; // La dirección MAC es 0022:12:01203D
@@ -66,7 +66,7 @@ void setup() {
     }
     Serial.println("\n¡Conectado tras reintento!");
   }
-  
+
   delay(500);
 
   
@@ -85,8 +85,9 @@ void loop() {
     // Leer valores dactuales (Rango original: 0 a 4095)
     int x1 = analogRead(PIN_X1);
     int y1 = analogRead(PIN_Y1);
-    int x2 = analogRead(PIN_X2);
-    int y2 = analogRead(PIN_Y2);
+    //int x2 = analogRead(PIN_X2);
+    //int y2 = analogRead(PIN_Y2);
+    Serial.println(x1);
 
     // Enviar datos de manera empaquetada periódicamente sin bloquear el loop
     if (millis() - ultimoEnvio >= intervaloEnvio) {
@@ -94,9 +95,10 @@ void loop() {
 
       // Construye la cadena de texto: "X1,Y,X2,Y2" terminado en un salto de línea
       SerialBT.print(x1);   SerialBT.print(",");
-      SerialBT.print(y1);   SerialBT.print(",");
-      SerialBT.print(x2);   SerialBT.print(",");
-      SerialBT.println(y2); 
+      SerialBT.println(y1);   //SerialBT.print(",");
+      //SerialBT.print(x2);   SerialBT.print(",");
+      //SerialBT.println(y2);
+      
     }
 
   } else {
