@@ -136,6 +136,9 @@ void loop() {
 
 }
 
+
+
+// Funciones:
 void adelante() {
   analogWrite(ENA, velA);
   digitalWrite(IN1, LOW);
