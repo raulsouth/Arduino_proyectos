@@ -17,7 +17,6 @@ uint8_t address[6] = {0x00, 0x22, 0x12, 0x01, 0x20, 0x3D}; // La dirección MAC 
 const char *pin = "numero"; // Pin de emparejamiento del HC-05
 
 
-
 void setup() {
   Serial.begin(115200);
 
@@ -60,7 +59,6 @@ void setup() {
   }
   
   delay(500);
-
   
 }
 
@@ -78,7 +76,21 @@ void loop() {
   }
 char letra;
 
-   /* if (Serial.available()) { // Desde el monitor serial del ESP32 enviamos un caracter que
+// Envío de caracter para control de un led del Arduino
+  //SerialBT.write('\n');
+  SerialBT.write('1');
+  Serial.println("Enviado 1 para encender led1");
+  delay(2000);
+  //SerialBT.write('\n');
+  SerialBT.write('2');
+  Serial.println("Enviado 2 para apagar led1");
+  delay(2000);
+}
+
+
+
+
+ /* if (Serial.available()) { // Desde el monitor serial del ESP32 enviamos un caracter que
     //si es el correcto se enviará luego por Bluetooth al Arduino.
       letra = Serial.read();
       SerialBT.write(letra);
@@ -91,20 +103,4 @@ char letra;
         Serial.println("Enviado 2 para apagar led1");
       }
     }*/
-
-
-  // Envío de caracter para control de un led del Arduino
-  //SerialBT.write('\n');
-  SerialBT.write('1');
-  Serial.println("Enviado 1 para encender led1");
-  delay(2000);
-  //SerialBT.write('\n');
-  SerialBT.write('2');
-  Serial.println("Enviado 2 para apagar led1");
-  delay(2000);
-
-
-  
-
-}
 
