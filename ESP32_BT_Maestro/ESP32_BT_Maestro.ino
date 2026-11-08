@@ -62,11 +62,6 @@ void setup() {
   delay(500);
 
   
-
- 
-
-
-
 }
 
 void loop() {
@@ -83,7 +78,7 @@ void loop() {
   }
 char letra;
 
-    if (Serial.available()) { // Desde el monitor serial del ESP32 enviamos un caracter que
+   /* if (Serial.available()) { // Desde el monitor serial del ESP32 enviamos un caracter que
     //si es el correcto se enviará luego por Bluetooth al Arduino.
       letra = Serial.read();
       SerialBT.write(letra);
@@ -95,11 +90,9 @@ char letra;
         SerialBT.write('2');
         Serial.println("Enviado 2 para apagar led1");
       }
-    }
+    }*/
 
 
-
-/*
   // Envío de caracter para control de un led del Arduino
   //SerialBT.write('\n');
   SerialBT.write('1');
@@ -109,9 +102,6 @@ char letra;
   SerialBT.write('2');
   Serial.println("Enviado 2 para apagar led1");
   delay(2000);
- */
-
-  
 
 
   
