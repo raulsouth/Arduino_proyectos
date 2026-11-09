@@ -35,15 +35,6 @@ void loop() {
       digitalWrite(led1, LOW);
       miBT.println("led1 off");
     }
-
-    if (DATO == '3'){
-      digitalWrite(led2, HIGH);
-      miBT.println("led2 on");
-    }
-    if (DATO == '4'){
-      digitalWrite(led2, LOW);
-      miBT.println("led2 off");
-    }
   }
 
     
