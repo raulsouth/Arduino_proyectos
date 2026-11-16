@@ -1,10 +1,10 @@
-
+// Programa para un motor paso a paso unipolar sin usar una librería específica
 
 int IN1 = 8;
 int IN2 = 9;
 int IN3 = 10; 
 int IN4 = 11;
-int demora = 20; //Demora entre pasos; no debe ser menor a 10 ms.
+int demora = 5; //Demora entre pasos; no debe ser menor a 10 ms.
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -46,7 +46,7 @@ void loop() {
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);  
-  delay(5000);
+  delay(2000);
 
 }
 
